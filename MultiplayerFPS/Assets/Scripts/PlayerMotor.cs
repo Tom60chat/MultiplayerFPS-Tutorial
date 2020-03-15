@@ -17,7 +17,7 @@ public class PlayerMotor : MonoBehaviour {
 
 	private Rigidbody rb;
 
-	void Start ()
+	void Awake ()
 	{
 		rb = GetComponent<Rigidbody>();
 	}

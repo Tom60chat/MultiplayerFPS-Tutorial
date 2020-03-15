@@ -4,7 +4,7 @@
 //-------------------------------------
 
 using UnityEngine;
-using UnityEngine.Networking;
+using Mirror;
 
 [RequireComponent(typeof(Player))]
 [RequireComponent(typeof(PlayerController))]
