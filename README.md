@@ -1,7 +1,7 @@
 Making a Multiplayer FPS in Unity
 ========
 
-/!\ This is a git based on the ATBrackeys tutorial, based on uNet I upgraded it to Mirror /!\
+/!\ This is a git based on the Brackeys tutorial created with uNet, I upgraded it to Mirror. /!\
 
 Learn how to make a multiplayer first-person shooter in Unity. This series teaches the very cool Mirror Networking system. All code is written entirely in C#.
 
