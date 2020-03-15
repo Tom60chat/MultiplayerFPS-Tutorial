@@ -9,7 +9,7 @@ Watch the videos [HERE](https://www.youtube.com/playlist?list=PLPV2KyIb3jR5PhGqs
 
 ###Software
 - This project runs on the [Unity](http://unity3d.com) engine. Make sure to have the newest version installed before running the project. The project folder is called "MultiplayerFPS".
-EditorVersion: 2019.3.1f1
+- EditorVersion: 2019.3.1f1
 
 ###Copyright
-This project is released into the public domain. For more information see LICENSE.
+- This project is released into the public domain. For more information see LICENSE.
