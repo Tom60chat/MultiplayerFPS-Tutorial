@@ -29,6 +29,22 @@ public class NetworkTest : MonoBehaviour
 
         if (FindObjectOfType<NetworkManager>())
             Destroy(gameObject);
+
+        #if UNITY_EDITOR
+        if(prefabs == null)
+        {
+            prefabs = (NetworkTestScriptableObject)AssetDatabase.LoadAssetAtPath(
+                EditorPrefs.GetString(NetworkTestEditor.prefabsAssetPath),
+                NetworkTestEditor.NetworkTestPrefabs);
+
+            if (prefabs == null)
+            {
+                Debug.LogError("Prefabs not found!");
+                enabled = false;
+            }
+
+        }
+        #endif
     }
 
     void Start()
@@ -132,14 +148,16 @@ public class NetworkTestEditor : EditorWindow
     }
 
     NetworkTestScriptableObject prefabs;
-    const string prefabsAssetPath = "NetworkTestPrefabsPath";
-    const string defaultPrefabsAssetPath = "Assets/NetworkTestPrefabs.asset";
-    readonly Type NetworkTestPrefabs = typeof(NetworkTestScriptableObject);
+    public const string prefabsAssetPath = "NetworkTestPrefabsPath";
+    public const string defaultPrefabsAssetPath = "Assets/NetworkTestPrefabs.asset";
+    public static readonly Type NetworkTestPrefabs = typeof(NetworkTestScriptableObject);
 
     bool spawnPrefabs;
 
     void OnGUI()
     {
+        GUILayout.Space(5);
+        GUILayout.Label("NetworkTestPrefabs.asset must be at the root of \nthe assets folder and not be renamed.", EditorStyles.miniLabel);
         GUILayout.Space(5);
         GUILayout.Label("Prefabs:", EditorStyles.boldLabel);
 
@@ -161,7 +179,6 @@ public class NetworkTestEditor : EditorWindow
 
         if (prefabs == null)    // That normally never append
             return;
-
 
         // Player prefabs var
         prefabs.playerPrefab = (GameObject)EditorGUILayout.ObjectField("Player prefabs", prefabs.playerPrefab, typeof(GameObject), false);
@@ -229,6 +246,7 @@ public class NetworkTestEditor : EditorWindow
         {
             prefabs = CreateInstance<NetworkTestScriptableObject>();
             AssetDatabase.CreateAsset(prefabs, defaultPrefabsAssetPath);
+
             EditorPrefs.SetString(prefabsAssetPath, defaultPrefabsAssetPath);
         }
     }
