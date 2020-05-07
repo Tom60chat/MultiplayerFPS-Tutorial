@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Networking;
+using Mirror;
 using System.Collections;
 
 [RequireComponent(typeof(PlayerSetup))]

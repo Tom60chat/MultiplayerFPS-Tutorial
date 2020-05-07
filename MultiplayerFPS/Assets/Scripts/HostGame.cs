@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Networking;
+using Mirror;
 
 public class HostGame : MonoBehaviour {
 
@@ -13,10 +13,10 @@ public class HostGame : MonoBehaviour {
 	void Start ()
 	{
 		networkManager = NetworkManager.singleton;
-		if (networkManager.matchMaker == null)
+		/*if (!networkManager.isNetworkActive)
 		{
-			networkManager.StartMatchMaker();
-		}
+			networkManager.StartHost();
+		}*/
 	}
 
 	public void SetRoomName (string _name)
@@ -26,11 +26,11 @@ public class HostGame : MonoBehaviour {
 
 	public void CreateRoom ()
 	{
-		if (roomName != "" && roomName != null)
+		/*if (roomName != "" && roomName != null)
 		{
 			Debug.Log("Creating Room: " + roomName + " with room for " + roomSize + " players.");
 			networkManager.matchMaker.CreateMatch(roomName, roomSize, true, "", "", "", 0, 0, networkManager.OnMatchCreate);
-		}
+		}*/
 	}
 
 }
